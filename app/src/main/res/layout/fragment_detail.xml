@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<data>
+
+    <variable
+        name="dog"
+        type="com.nacho.dogsapp.model.DogBreed" />
+    <variable
+        name="handlers"
+        type="com.nacho.dogsapp.view.MyHandlers" />
+</data>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.DetailFragment">
+
+    <ImageView
+        android:id="@+id/imageView_dog_image_detail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:minHeight="200dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_dog_name_detail"
+        style="@style/Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@{dog.dogBreed}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_dog_image_detail" />
+
+    <TextView
+        android:id="@+id/textView_dog_purpose_detail"
+        style="@style/InfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@{dog.breedGroup}"
+        app:layout_constraintEnd_toEndOf="@+id/textView_dog_name_detail"
+        app:layout_constraintStart_toStartOf="@+id/textView_dog_name_detail"
+        app:layout_constraintTop_toBottomOf="@+id/textView_dog_name_detail" />
+
+    <TextView
+        android:id="@+id/textView_dog_temperament_detail"
+        style="@style/InfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@{dog.temperament}"
+        app:layout_constraintEnd_toEndOf="@+id/textView_dog_purpose_detail"
+        app:layout_constraintStart_toStartOf="@+id/textView_dog_purpose_detail"
+        app:layout_constraintTop_toBottomOf="@+id/textView_dog_purpose_detail" />
+
+    <TextView
+        android:id="@+id/textView_dog_lifespan_detail"
+        style="@style/InfoText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{dog.lifeSpan}"
+        app:layout_constraintEnd_toEndOf="@+id/textView_dog_temperament_detail"
+        app:layout_constraintStart_toStartOf="@+id/textView_dog_temperament_detail"
+        app:layout_constraintTop_toBottomOf="@+id/textView_dog_temperament_detail" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
