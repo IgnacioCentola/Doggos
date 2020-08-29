@@ -1,5 +1,6 @@
 package com.nacho.dogsapp.view;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -9,12 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -56,6 +57,7 @@ public class ListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
 //        FakeDogsApi fakeDogsApi = new FakeDogsApi();
 //        DogsRepository dogsRepository = new DogsRepository(fakeDogsApi);
         viewModel = new ViewModelProvider(this).get(DogListViewModel.class);
@@ -67,7 +69,12 @@ public class ListFragment extends Fragment {
         isErrorTextView = getView().findViewById(R.id.textView_error_msg);
         swipeRefreshLayout = getView().findViewById(R.id.refresh_layout);
 
-        dogsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        dogsRecyclerView.setLayoutManager(
+                getActivity().getResources().getConfiguration().orientation == 1
+                        ? new LinearLayoutManager(getContext())
+                        : new GridLayoutManager(getContext(), 2));
+
         dogsRecyclerView.setAdapter(adapter);
 
         swipeRefreshLayout.setColorSchemeResources(
@@ -79,7 +86,7 @@ public class ListFragment extends Fragment {
             dogsRecyclerView.setVisibility(View.GONE);
             isErrorTextView.setVisibility(View.GONE);
             isLoadingProgressBar.setVisibility(View.VISIBLE);
-//            viewModel.refreshBypassCache();
+            viewModel.refreshBypassCache();
             swipeRefreshLayout.setRefreshing(false);
         });
 

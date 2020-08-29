@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Doggos</string>
+    <string name="add_to_fav">Add to favorites</string>
 
 </resources>

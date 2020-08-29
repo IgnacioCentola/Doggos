@@ -2,6 +2,7 @@ package com.nacho.dogsapp.view;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -10,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.nacho.dogsapp.R;
 import com.nacho.dogsapp.databinding.ItemDogBinding;
 import com.nacho.dogsapp.model.DogBreed;
+import com.nacho.dogsapp.util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class DogListAdapter extends RecyclerView.Adapter<DogListAdapter.DogViewHolder> {
 
@@ -51,11 +52,14 @@ public class DogListAdapter extends RecyclerView.Adapter<DogListAdapter.DogViewH
     @Override
     public void onBindViewHolder(@NonNull DogViewHolder holder, int position) {
         holder.itemDogBinding.setDog(dogList.get(position));
-//        holder.itemDogBinding.getRoot().setOnClickListener((view) ->{
-//            //* Navigate to detail fragment and pass the appropriate parameters
-//            MyHandlers handlers = new MyHandlers();
-//            handlers.onGoToDetails(view);
-//        });
+        //* Replaced by data binding adapter method ///////////////////////////////////
+        // ImageView dogImageView = holder.itemDogBinding.getRoot().findViewById(R.id.imageView_dog_image);
+
+        // Util.loadImage(
+        //         dogImageView,
+        //         dogList.get(position).getImageUrl(),
+        //         Util.getProgressDrawable(dogImageView.getContext()));
+        ////////////////////////////////////////////////////*
     }
 
     @Override
