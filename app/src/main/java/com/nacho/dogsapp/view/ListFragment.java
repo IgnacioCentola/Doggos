@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -57,9 +58,6 @@ public class ListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
-//        FakeDogsApi fakeDogsApi = new FakeDogsApi();
-//        DogsRepository dogsRepository = new DogsRepository(fakeDogsApi);
         viewModel = new ViewModelProvider(this).get(DogListViewModel.class);
         viewModel.refresh();
 
@@ -121,20 +119,19 @@ public class ListFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-//        inflater.inflate(R.menu.list_menu, menu);
+        inflater.inflate(R.menu.list_menu, menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings: {
+                if (isAdded()) {
+                    Navigation.findNavController(getView()).navigate(ListFragmentDirections.actionSettings());
+                }
+                break;
+            }
+        }
         return super.onOptionsItemSelected(item);
-//        switch (item.getItemId()) {
-//            case R.id.actionSettings: {
-//                if(isAdded()) {
-//                    Navigation.findNavController(getView()).navigate(ListFragmentDirections.actionSettings());
-//                }
-//                break;
-//            }
-//        }
-//        return super.onOptionsItemSelected(item);
     }
 }

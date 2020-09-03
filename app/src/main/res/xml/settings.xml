@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <EditTextPreference
+        android:defaultValue="10"
+        android:dialogIcon="@drawable/ic_baseline_watch_later_24"
+        android:icon="@drawable/ic_baseline_watch_later_24"
+        android:key="pref_cache_duration"
+        android:title="Cache duration in seconds" />
+
+    <ListPreference
+        android:defaultValue="pref_color_red_value"
+        android:entries="@array/pref_color_option_labels"
+        android:entryValues="@array/pref_color_option_values"
+        android:icon="@drawable/ic_baseline_brightness_6_24"
+        android:key="theme_setter"
+        android:title="Theme"
+        android:dialogTitle="Choose theme"/>
+
+</PreferenceScreen>

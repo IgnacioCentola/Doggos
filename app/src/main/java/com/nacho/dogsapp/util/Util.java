@@ -9,6 +9,8 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.nacho.dogsapp.R;
 
@@ -17,7 +19,8 @@ public class Util {
                                  CircularProgressDrawable progressDrawable) {
         RequestOptions requestOptions = new RequestOptions()
                 .placeholder(progressDrawable)
-                .error(R.mipmap.ic_launcher);
+                .error(R.mipmap.ic_launcher)
+                .transform(new RoundedCorners(15));
 
         Glide.with(imageView.getContext())
                 .setDefaultRequestOptions(requestOptions)

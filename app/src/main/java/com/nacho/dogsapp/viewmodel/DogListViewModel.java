@@ -13,6 +13,7 @@ import com.nacho.dogsapp.model.DogBreed;
 import com.nacho.dogsapp.model.DogDao;
 import com.nacho.dogsapp.model.DogDatabase;
 import com.nacho.dogsapp.model.DogsApiService;
+import com.nacho.dogsapp.util.NotificationsHelper;
 import com.nacho.dogsapp.util.SharedPreferencesHelper;
 
 import java.util.ArrayList;
@@ -86,7 +87,7 @@ public class DogListViewModel extends AndroidViewModel {
                                 // * Asynchronously save dog list to local DB
                                 insertTask = new InsertDogsTask();
                                 insertTask.execute(dogBreeds);
-                                Toast.makeText(getApplication(), "Dogs retrieved from endpoint", Toast.LENGTH_SHORT).show();
+                                NotificationsHelper.getInstance(getApplication()).showNotification();
                             }
 
                             @Override

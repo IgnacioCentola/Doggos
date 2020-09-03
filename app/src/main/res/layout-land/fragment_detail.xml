@@ -24,6 +24,7 @@
             android:layout_marginTop="16dp"
             android:minHeight="200dp"
             android:src="@mipmap/ic_launcher"
+            android:imageUrl="@{dog.imageUrl}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
