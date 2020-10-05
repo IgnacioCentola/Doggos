@@ -3,8 +3,10 @@ package com.nacho.dogsapp.model;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
+import java.util.UUID;
 
 @Dao
 public interface DogDao {
@@ -19,4 +21,7 @@ public interface DogDao {
 
     @Query("DELETE FROM dogbreed")
     void deleteAllDogs();
+
+    @Query("UPDATE dogbreed SET isFavorite = :isFavorite WHERE uuid = :id")
+    void setFavorite(int id, boolean isFavorite);
 }

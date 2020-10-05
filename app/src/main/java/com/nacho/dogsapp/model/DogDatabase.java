@@ -16,6 +16,7 @@ public abstract class DogDatabase extends RoomDatabase {
                     context.getApplicationContext(),
                     DogDatabase.class,
                     "dogdatabase")
+                    .fallbackToDestructiveMigration()
                     .build();
         }
         return instance;

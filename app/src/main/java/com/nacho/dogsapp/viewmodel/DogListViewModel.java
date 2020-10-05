@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.nacho.dogsapp.model.DogBreed;
 import com.nacho.dogsapp.model.DogDao;
 import com.nacho.dogsapp.model.DogDatabase;
@@ -54,7 +53,11 @@ public class DogListViewModel extends AndroidViewModel {
         return isLoading;
     }
 
+    /**
+     * Checks cache duration and decides if it should fetch data locally or from api
+     */
     public void refresh() {
+        checkCacheDuration();
         long updateTime = preferencesHelper.getUpdateTime();
         long currentTime = System.nanoTime();
         if (updateTime != 0 && currentTime - updateTime < refreshTime) {
@@ -64,8 +67,28 @@ public class DogListViewModel extends AndroidViewModel {
         }
     }
 
-    public void refreshBypassCache(){
+
+    /**
+     * Refreshes data without checking its existence in local DB
+     */
+    public void refreshBypassCache() {
         fetchFromDogsApi();
+    }
+
+    /**
+     * Resets cache duration from settings input for fetching data from api
+     */
+    private void checkCacheDuration() {
+
+        String cachePreference = preferencesHelper.getCacheDuration();
+        if (!cachePreference.equals("")) {
+            try {
+                int cachePreferenceInt = Integer.parseInt(cachePreference);
+                refreshTime = cachePreferenceInt * 1000 * 1000 * 1000L;
+            } catch (NumberFormatException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
 
     private void fetchFromDatabase() {
@@ -163,4 +186,5 @@ public class DogListViewModel extends AndroidViewModel {
             Toast.makeText(getApplication(), "Dogs retrieved from database", Toast.LENGTH_SHORT).show();
         }
     }
+
 }

@@ -22,11 +22,31 @@ public class SharedPreferencesHelper {
         return instance;
     }
 
+    /**
+     * Updates the cache duration that determines when to fetch from api
+     *
+     * @param time the time to set the current cache duration to
+     */
     public void setUpdateTime(long time) {
         preferences.edit().putLong(PREF_TIME, time).apply();
     }
 
-    public long getUpdateTime(){
-        return preferences.getLong(PREF_TIME,0);
+    /**
+     * Return current cache duration
+     *
+     * @return current cache duration
+     */
+
+    public long getUpdateTime() {
+        return preferences.getLong(PREF_TIME, 0);
+    }
+
+    /**
+     * Retrieves cache duration in seconds from settings input
+     *
+     * @return cache duration in seconds in string format
+     */
+    public String getCacheDuration() {
+        return preferences.getString("pref_cache_duration", "");
     }
 }

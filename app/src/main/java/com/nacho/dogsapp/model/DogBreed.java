@@ -39,6 +39,9 @@ public class DogBreed {
     @PrimaryKey(autoGenerate = true)
     private int uuid;
 
+    @ColumnInfo(name = "isFavorite")
+    private boolean isFavorite;
+
     public DogBreed(int uuid, String breedId, String dogBreed, String lifeSpan, String breedGroup, String bredFor, String temperament, String imageUrl) {
         this.uuid = uuid;
         this.breedId = breedId;
@@ -48,6 +51,7 @@ public class DogBreed {
         this.bredFor = bredFor;
         this.temperament = temperament;
         this.imageUrl = imageUrl;
+        isFavorite = false;
     }
 
     public int getUuid() {
@@ -86,6 +90,14 @@ public class DogBreed {
         return imageUrl;
     }
 
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
     @Override
     public String toString() {
         return "DogBreed{" +
@@ -97,6 +109,7 @@ public class DogBreed {
                 ", bredFor='" + bredFor + '\'' +
                 ", temperament='" + temperament + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
+                ", isFavorite='" + isFavorite + '\'' +
                 '}';
     }
 }
