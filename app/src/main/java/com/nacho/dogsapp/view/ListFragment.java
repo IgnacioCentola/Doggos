@@ -1,7 +1,5 @@
 package com.nacho.dogsapp.view;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,7 +8,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -44,7 +41,7 @@ public class ListFragment extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView isErrorTextView, noResultsTextView;
     private ProgressBar isLoadingProgressBar;
-    private boolean favorites;
+    private boolean favorites = false;
 
     public ListFragment() {
     }
@@ -66,7 +63,9 @@ public class ListFragment extends Fragment {
         if(viewModel == null) {
             viewModel = new ViewModelProvider(this).get(DogListViewModel.class);
 
-            viewModel.refresh();
+            if(adapter.getItemCount() == 0) {
+                viewModel.refresh();
+            }
         }
 
         dogsRecyclerView = getView().findViewById(R.id.recycler_view_dogs_list);

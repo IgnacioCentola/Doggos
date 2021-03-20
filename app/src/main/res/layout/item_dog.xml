@@ -18,15 +18,18 @@
             type="com.nacho.dogsapp.view.MyHandlers" />
     </data>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
         android:layout_margin="8dp"
-        app:cardElevation="3dp">
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+        <!--        android:background="?android:attr/selectableItemBackground"-->
 
         <LinearLayout
-            style="@style/Theme.MaterialComponents.Light"
             android:layout_width="match_parent"
             android:layout_height="125dp"
             android:onClick="@{(v) -> handlers.onGoToDetails(v, dog.uuid)}"
@@ -45,8 +48,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:padding="8dp"
                 android:imageUrl="@{dog.imageUrl}"
+                android:padding="8dp"
                 android:src="@mipmap/ic_launcher" />
 
             <LinearLayout
@@ -73,5 +76,5 @@
 
             </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </layout>

@@ -61,7 +61,7 @@ public class NotificationsHelper {
                 .setContentText("Dogs retrieved")
                 .setStyle(
                         new NotificationCompat.BigPictureStyle()
-                                .bigLargeIcon(null)
+                                .bigLargeIcon(largeIcon)
                                 .bigPicture(largeIcon))
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)

@@ -31,7 +31,7 @@ public class DetailViewModel extends AndroidViewModel {
 
     public void setIsFavorite(int uuid, boolean isFavorite) {
         setIsFavoriteTask = new SetIsFavoriteTask();
-        SetIsFavoriteTaskParams params = new SetIsFavoriteTaskParams(uuid, !isFavorite);
+        SetIsFavoriteTaskParams params = new SetIsFavoriteTaskParams(uuid, isFavorite);
         setIsFavoriteTask.execute(params);
     }
 

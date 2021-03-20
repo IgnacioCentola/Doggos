@@ -52,10 +52,8 @@ public class DetailFragment extends Fragment {
         detailViewModel.fetch(dogUuid);
 
         floatingActionButton = getView().findViewById(R.id.favorite_button);
-        floatingActionButton.setOnClickListener(button -> {
-            detailViewModel.setIsFavorite(dog.getUuid(), dog.isFavorite());
-
-        });
+        floatingActionButton.setOnClickListener(button ->
+                        detailViewModel.setIsFavorite(dog.getUuid(), !dog.isFavorite()));
 
         detailViewModel.getDogLiveData().observe(getViewLifecycleOwner(), dogBreed -> {
             dog = dogBreed;
